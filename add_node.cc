@@ -24,7 +24,7 @@ void AddNode::SetWeights(const vector<NodeValue>& weights) {
 NodeValue AddNode::ComputeValue() {
   node_value_ = 0.0;
   initialized_ = false;
-  for (int i = 0; i < weights_.size(); ++i) {
+  for (size_t i = 0; i < weights_.size(); ++i) {
     node_value_ += weights_[i] * children_[i]->node_value();
   }
   initialized_ = true;
