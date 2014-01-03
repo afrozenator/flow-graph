@@ -35,9 +35,9 @@ Node::Node(const string& name, bool constant_node, Nodes* children,
 Node::~Node() {}
 
 NodeValue Node::node_value() {
-  LOG_INFO("initialized at %s: %d", name_.c_str(), initialized_);
+  LOG << "Initialized at " << name_ << " : " << initialized_ << std::endl;
   if (!initialized_) ComputeValue();
-  LOG_INFO("node_value called at %s returning %f", name_.c_str(), node_value_);
+  LOG << "node_value called at " << name_ << " returning: " << node_value_ << std::endl;
   return node_value_;
 }
 

@@ -10,10 +10,16 @@
 #ifndef __MACROS_H__
 #define __MACROS_H__
 
+#include <iostream>
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#define LOG(fp, ...) \
+#define LOG \
+std::cout << __DATE__ << " - " << __TIME__ << " [" << __FILE__ << ":" << \
+__LINE__ << "] "\
+
+#define ILOG(fp, ...) \
 do { \
   fprintf(fp, "%s - %s [%s:%d] ", __DATE__, __TIME__, __FILE__,  __LINE__); \
   fprintf(fp, __VA_ARGS__); \
@@ -21,8 +27,8 @@ do { \
 } \
 while (0)
 
-#define LOG_ERROR(...) LOG(stderr, __VA_ARGS__)
-#define LOG_INFO(...) LOG(stdout, __VA_ARGS__)
+#define LOG_ERROR(...) ILOG(stderr, __VA_ARGS__)
+#define LOG_INFO(...) ILOG(stdout, __VA_ARGS__)
 
 #define LOG_FATAL(...) LOG_ERROR(__VA_ARGS__); exit(EXIT_FAILURE);
 
