@@ -19,6 +19,7 @@ void WeightedNode::set_default_weights() {
 }
 
 void WeightedNode::set_weights(const vector<NodeValue>& weights) {
+  CHECK(weights.size() == children_.size());
   weights_.assign(weights.begin(), weights.end());
 }
 

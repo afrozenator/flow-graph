@@ -11,18 +11,16 @@
 namespace flow_graphs {
 
 ConstantNode::ConstantNode(const string& name, NodeValue value, Nodes* parents)
-  : Node(name, true, NULL, parents, value) {}
-
-NodeValue ConstantNode::ComputeValue() {
-  return node_value_;
-}
-
-NodeValue ConstantNode::du_dvi(Node* child) {
-  LOG_FATAL("Constant node has no children!");
-}
+  : InputNode(name, true, value, parents) {}
 
 void ConstantNode::set_node_value(NodeValue value) {
-  node_value_ = value;
+  LOG << "Trying to set the node value of constant node: " << name_
+      << ", ignoring" << std::endl;
+}
+
+void ConstantNode::set_initialized_false() {
+  LOG << "Trying to set the initialized of constant node: " << name_
+      << ", to false, ignoring" << std::endl;
 }
 
 }  // namespace flow_graphs

@@ -32,9 +32,14 @@ class Node {
   // Set children.
   void SetChildren(const Nodes& children);
   void AddChild(Node* child);
+  const Nodes& Children() const { return children_; }
   // Set parents
   void SetParents(const Nodes& parents);
   void AddParent(Node* parent);
+  const Nodes& Parents() const { return parents_; }
+
+  virtual void set_node_value(NodeValue value) { node_value_ = value; }
+  virtual void set_initialized_false() { initialized_ = false; }
 
   // These are useful for backpropagation
 
