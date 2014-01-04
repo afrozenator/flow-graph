@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
   Nodes adds_children{&c1, &c2, &c3};
   AddNode a("a", &adds_children, NULL);
   c1.AddParent(&a); c2.AddParent(&a); c3.AddParent(&a);
-  a.SetWeights({1.0, 2.0, 3.0});
+  a.set_weights({1.0, 2.0, 3.0});
   Nodes mults_children{&a, &c4};
   MultiplyNode m("m", &mults_children, NULL);
   a.AddParent(&m); c4.AddParent(&m);

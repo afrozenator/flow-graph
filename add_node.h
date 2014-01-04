@@ -7,24 +7,17 @@
 #ifndef __ADD_NODE_H__
 #define __ADD_NODE_H__
 
-#include "node.h"
+#include "weighted_node.h"
 
 namespace flow_graphs {
 
-class AddNode : public Node {
+class AddNode : public WeightedNode {
  public:
   AddNode(const string& name, Nodes* children, Nodes* parents);
-  AddNode(const string& name, Nodes* children, Nodes* parents, NodeValue value);
   virtual ~AddNode() {}
   virtual NodeValue ComputeValue();
   virtual NodeValue du_dvi(Node* child);
   virtual void du_dv(vector<NodeValue>* derivatives_wrt_children);
-  void SetWeights();
-  void SetWeights(const vector<NodeValue>& weights);
-  const vector<NodeValue>& Weights() const;
-
- protected:
-  vector<NodeValue> weights_;
 };
 
 }  // namespace flow_graphs

@@ -9,16 +9,7 @@
 namespace flow_graphs {
 
 AddNode::AddNode(const string& name, Nodes* children, Nodes* parents)
-  : Node(name, false, children, parents) {
-  if (!children_.empty()) SetWeights();
-}
-
-void AddNode::SetWeights() {
-  weights_.assign(children_.size(), 1.0);
-}
-
-void AddNode::SetWeights(const vector<NodeValue>& weights) {
-  weights_.assign(weights.begin(), weights.end());
+  : WeightedNode(name, children, parents) {
 }
 
 NodeValue AddNode::ComputeValue() {
