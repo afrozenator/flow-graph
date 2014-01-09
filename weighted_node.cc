@@ -23,4 +23,12 @@ void WeightedNode::set_weights(const vector<NodeValue>& weights) {
   weights_.assign(weights.begin(), weights.end());
 }
 
+void WeightedNode::dL_dw(vector<NodeValue>* derivatives_wrt_weight) {
+  CHECK_NOTNULL(derivatives_wrt_weight);
+  derivatives_wrt_weight->clear();
+  for (size_t idx = 0; idx < weights_.size(); ++idx) {
+    derivatives_wrt_weight->push_back(dL_dwi(idx));
+  }
+}
+
 }  // namespace flow_graphs

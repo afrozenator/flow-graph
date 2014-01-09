@@ -33,4 +33,9 @@ void AddNode::du_dv(vector<NodeValue>* derivatives_wrt_children) {
   derivatives_wrt_children->assign(weights_.begin(), weights_.end());
 }
 
+// dL/dw = dL/du * du/dw ... where du/dw for weighted addition is just input.
+NodeValue AddNode::dL_dwi(size_t weight_index) {
+  return dL_du() * children_[weight_index]->node_value();
+}
+
 }  // namespace flow_graphs

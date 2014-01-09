@@ -24,7 +24,7 @@ void FlowGraph::ResetFlowGraph() {
 }
 
 void FlowGraph::ResetFlowGraphForNode(Node* node) {
-  node->set_initialized_false();
+  node->Reset();
   for (Node* child : node->Children()) {
     ResetFlowGraphForNode(child);
   }

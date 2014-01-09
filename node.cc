@@ -35,7 +35,6 @@ Node::Node(const string& name, bool constant_node, Nodes* children,
 Node::~Node() {}
 
 NodeValue Node::node_value() {
-  LOG << "Initialized at " << name_ << " : " << initialized_ << std::endl;
   if (!initialized_) ComputeValue();
   LOG << "node_value called at " << name_ << " returning: " << node_value_ << std::endl;
   return node_value_;
@@ -64,9 +63,15 @@ void Node::AddParent(Node* parent) {
 NodeValue Node::dL_du() {
   // We assume that the output node in the flow graph is the loss function
   // itself. If that is the case then this is 1.0
-  if (output_node_) return 1.0;
+  if (output_node_) {
+    LOG << "dL/du for " << name_ << " is 1.0" << std::endl;
+    return 1.0;
+  }
   // If this is a constant node, then there is no derivative at all!
-  if (constant_node_) return 0.0;
+  if (constant_node_) {
+    LOG << "dL/du for " << name_ << " is 0.0" << std::endl;
+    return 0.0;
+  }
   // If this is not an output node, then this value is as follows:
   // \frac{\partial{L}}{\partial{u}} =
   //                \sum_{v_i \in parents(u)}
@@ -78,6 +83,8 @@ NodeValue Node::dL_du() {
   for (Node* parent : parents_) {
     accumulate += parent->dL_du() * parent->du_dvi(this);
   }
+  LOG << "dL/du for " << name_ << " is " << accumulate << std::endl;
+  return accumulate;
 }
 
 void Node::du_dv(vector<NodeValue>* derivatives_wrt_children) {

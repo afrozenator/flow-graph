@@ -17,7 +17,7 @@ class ConstantNode : public InputNode {
   virtual ~ConstantNode() {}
   // Can't set/reset a constant node.
   virtual void set_node_value(NodeValue value);
-  virtual void set_initialized_false();
+  virtual void Reset();
 };
 
 }  // namespace flow_graphs

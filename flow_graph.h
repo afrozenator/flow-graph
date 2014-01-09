@@ -19,6 +19,8 @@ class FlowGraph {
   void SetInputs(const vector<NodeValue>& input_values);
   void RunFlowGraph();
   void InspectOutputs(vector<NodeValue>* output_values);
+  const Nodes& input() const { return input_; }
+  const Nodes& output() const { return output_; }
 
  private:
   void ResetFlowGraphForNode(Node* node);

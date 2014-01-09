@@ -20,8 +20,13 @@ class WeightedNode : public Node {
   void set_weights(const vector<NodeValue>& weights);
   const vector<NodeValue>& weights() const { return weights_; }
 
+  // Derivative of the loss with respect to a particular weight.
+  virtual NodeValue dL_dwi(size_t weight_index) ABSTRACT;
+  virtual void dL_dw(vector<NodeValue>* derivatives_wrt_weight);
+
  protected:
   vector<NodeValue> weights_;
+  vector<NodeValue> derivative_loss_wrt_weights_;
 };
 
 }  // namespace flow_graphs

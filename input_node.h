@@ -18,6 +18,10 @@ class InputNode : public Node {
   virtual ~InputNode() {}
   virtual NodeValue ComputeValue();
   virtual NodeValue du_dvi(Node* child);
+  // Shouldn't be able to add children to an input node.
+  virtual void SetChildren(const Nodes& children);
+  virtual void AddChild(Node* child);
+
  protected:
   InputNode(const string& name, bool constant, NodeValue value, Nodes* parents);
 };

@@ -27,19 +27,19 @@ class Node {
   // Classes deriving from this have control over how to implement this
   // function (and will need to have other parameters as well).
   virtual NodeValue ComputeValue() ABSTRACT;
-  // This calls |ComputeValue| if it isn't initialized.
-  NodeValue node_value();
   // Set children.
-  void SetChildren(const Nodes& children);
-  void AddChild(Node* child);
+  virtual void SetChildren(const Nodes& children);
+  virtual void AddChild(Node* child);
   const Nodes& Children() const { return children_; }
   // Set parents
-  void SetParents(const Nodes& parents);
-  void AddParent(Node* parent);
+  virtual void SetParents(const Nodes& parents);
+  virtual void AddParent(Node* parent);
   const Nodes& Parents() const { return parents_; }
 
+  // This calls |ComputeValue| if it isn't initialized.
+  NodeValue node_value();
   virtual void set_node_value(NodeValue value) { node_value_ = value; }
-  virtual void set_initialized_false() { initialized_ = false; }
+  virtual void Reset() { initialized_ = false; }
 
   // These are useful for backpropagation
 

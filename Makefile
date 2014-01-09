@@ -1,11 +1,17 @@
 CC=g++
 CFLAGS=-std=c++0x -I.
 
-dining_problem_main: dining_problem_main.cc flow_graph.o input_node.o constant_node.o multiply_node.o add_node.o weighted_node.o node.o
-	$(CC) dining_problem_main.cc flow_graph.o input_node.o constant_node.o multiply_node.o add_node.o weighted_node.o node.o -o dining_problem_main $(CFLAGS)
+dining_problem_main: dining_problem_main.cc flow_graph.o squared_error_loss_node.o input_node.o constant_node.o multiply_node.o add_node.o weighted_node.o node.o
+	$(CC) dining_problem_main.cc flow_graph.o squared_error_loss_node.o input_node.o constant_node.o multiply_node.o add_node.o weighted_node.o node.o -o dining_problem_main $(CFLAGS)
 
 main: main.cc input_node.o constant_node.o multiply_node.o add_node.o weighted_node.o node.o
 	$(CC) main.cc input_node.o constant_node.o multiply_node.o add_node.o weighted_node.o node.o -o main $(CFLAGS)
+
+squared_error_loss_function.o: squared_error_loss_function.cc flow_graph.o
+	$(CC) -c squared_error_loss_function.cc $(CFLAGS)
+
+squared_error_loss_node.o: squared_error_loss_node.cc node.o
+	$(CC) -c squared_error_loss_node.cc $(CFLAGS)
 
 flow_graph.o: flow_graph.cc node.o
 	$(CC) -c flow_graph.cc $(CFLAGS)

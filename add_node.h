@@ -18,6 +18,7 @@ class AddNode : public WeightedNode {
   virtual NodeValue ComputeValue();
   virtual NodeValue du_dvi(Node* child);
   virtual void du_dv(vector<NodeValue>* derivatives_wrt_children);
+  virtual NodeValue dL_dwi(size_t weight_index);
 };
 
 }  // namespace flow_graphs

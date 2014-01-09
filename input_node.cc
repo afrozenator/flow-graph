@@ -28,4 +28,14 @@ NodeValue InputNode::du_dvi(Node* child) {
   LOG_FATAL("Input node has no children!");
 }
 
+void InputNode::SetChildren(const Nodes& children) {
+  LOG << "Trying to add children to input node: " << name_ << " ignoring."
+      << std::endl;
+}
+
+void InputNode::AddChild(Node* child) {
+  LOG << "Trying to add children to input node: " << name_ << " ignoring."
+      << std::endl;
+}
+
 }  // namespace flow_graphs

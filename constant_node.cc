@@ -18,7 +18,7 @@ void ConstantNode::set_node_value(NodeValue value) {
       << ", ignoring" << std::endl;
 }
 
-void ConstantNode::set_initialized_false() {
+void ConstantNode::Reset() {
   LOG << "Trying to set the initialized of constant node: " << name_
       << ", to false, ignoring" << std::endl;
 }
