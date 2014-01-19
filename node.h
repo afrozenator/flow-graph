@@ -45,8 +45,6 @@ class Node {
   virtual void ComputeValue() ABSTRACT;
   Value value() const { return value_; }
   virtual void set_value(Value value);
-  bool value_initialized() const { return value_initialized_; }
-  virtual void set_value_initialized(bool value_initialized);
 
   virtual void Reset();
 
@@ -57,7 +55,6 @@ class Node {
   Nodes children_;
 
   Value value_;
-  bool value_initialized_;
 };
 
 }  // namespace flow_graphs

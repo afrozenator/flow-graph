@@ -15,7 +15,6 @@ MultiplyNode::MultiplyNode(const string& name) : Node(name, kComputational) {}
 MultiplyNode::~MultiplyNode() {}
 
 void MultiplyNode::ComputeValue() {
-  if (value_initialized_) return;
   value_ = std::accumulate(children_.begin(),
                            children_.end(),
                            1.0,

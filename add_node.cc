@@ -13,7 +13,6 @@ Value AddValueFromNode(Value in, Node* child) {
 AddNode::AddNode(const string& name) : Node(name, kComputational) {}
 
 void AddNode::ComputeValue() {
-  if (value_initialized_) return;
   value_ = std::accumulate(children_.begin(),
                            children_.end(),
                            0.0,

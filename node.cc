@@ -7,8 +7,7 @@ namespace flow_graphs {
 Node::Node(const string& name, NodeType node_type)
     : name_(name),
       node_type_(node_type),
-      value_(-std::numeric_limits<Value>::max()),
-      value_initialized_(false) {
+      value_(-std::numeric_limits<Value>::max()) {
 }
 
 void Node::set_name(const string& name) {
@@ -37,16 +36,10 @@ void Node::add_child(Node* child) {
 
 void Node::set_value(Value value) {
   value_ = value;
-  value_initialized_ = true;
-}
-
-void Node::set_value_initialized(bool value_initialized) {
-  value_initialized_ = value_initialized;
 }
 
 void Node::Reset() {
   value_ = -std::numeric_limits<Value>::max();
-  value_initialized_ = false;
 }
 
 }  // namespace flow_graphs
